@@ -55,6 +55,21 @@
  <em>1-bit full adder node graph - created with LUIS Node Widgets.</em>
 </p>
 
+## Getting Started
+
+1. **Install Löve2D**: You can download Löve2D 11.5 from [here](https://love2d.org/).
+2. **Clone the LUIS Library**:
+    ```bash
+    git clone --recurse-submodules https://github.com/SiENcE/luis_samples.git
+    ```
+3. **Start the samples**:
+    ```lua
+    love luis_samples/
+    ```
+
+4. **Switch samples**:
+    Edit main.lua to switch look at different samples.
+
 ## Features
 
 | Feature | Description |
@@ -71,22 +86,7 @@
 | Debug Mode | Toggle grid and element outlines for easy development |
 
 
-**Note**: These features are all part of the LUIS core library (`core.lua`), which has **zero dependencies**! You can use the core library on its own and implement your own widgets for a lightweight UI system for [Löve2D](https://love2d.org/) without any additional dependencies.
-
-## Getting Started
-
-1. **Install Löve2D**: You can download Löve2D 11.5 from [here](https://love2d.org/).
-2. **Clone the LUIS Library**:
-    ```bash
-    git clone --recurse-submodules https://github.com/SiENcE/luis_samples.git
-    ```
-3. **Start the samples**:
-    ```lua
-    love luis_samples/
-    ```
-
-4. **Switch samples**:
-    Edit main.lua to switch look at different samples.
+**Note**: These features are all part of the [LUIS core library](https://github.com/SiENcE/luis/tree/restructuring) (`core.lua`), which has **zero dependencies**! You can use the core library on its own and implement your own widgets for a lightweight UI system for [Löve2D](https://love2d.org/) without any additional dependencies.
 
 ## Documentation
 
