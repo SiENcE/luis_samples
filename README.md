@@ -8,24 +8,7 @@
 
 **LUIS** (Love User Interface System) is a flexible graphical user interface (GUI) framework built on top of the [Löve2D](https://love2d.org/) game framework. LUIS provides developers with the tools to create dynamic, grid-centric, layered user interfaces for games and applications.
 
-## Features
-
-| Feature | Description |
-|---------|-------------|
-| Flexible Layout | Uses a grid-based system and FlexContainers for easy UI layout |
-| Layer Management | Support for multiple UI layers with show/hide functionality & Z-indexing for element layering |
-| Theme Support | Global theme customization, Per-widget theme overrides |
-| Customizable Theming | Easily change the look and feel of your UI elements |
-| Widget API | Core system for loading and managing widgets (widgets themselves are optional and loaded dynamically) |
-| Event Handling | Built-in support for mouse, touch, keyboard, and gamepad interactions & focus management |
-| Responsive Design | Automatically scales UI elements and interaction based on screen dimensions |
-| State Management | Tracks and persists element states to save and load configurations |
-| Extensibility | Modular design allowing easy addition of new widgets or removing unneeded widgets (see Widget Types section) |
-| Debug Mode | Toggle grid and element outlines for easy development |
-
-
-**Note**: These features are all part of the LUIS core library (`core.lua`), which has **zero dependencies**! You can use the core library on its own and implement your own widgets for a lightweight UI system for [Löve2D](https://love2d.org/) without any additional dependencies.
-
+## LUIS: Samples
 
 <p align="center">
  <a href="https://github.com/SiENcE/luis/blob/main/assets/screenshots/Screenshot_2024-12-17.jpg">
@@ -72,6 +55,23 @@
  <em>1-bit full adder node graph - created with LUIS Node Widgets.</em>
 </p>
 
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| Flexible Layout | Uses a grid-based system and FlexContainers for easy UI layout |
+| Layer Management | Support for multiple UI layers with show/hide functionality & Z-indexing for element layering |
+| Theme Support | Global theme customization, Per-widget theme overrides |
+| Customizable Theming | Easily change the look and feel of your UI elements |
+| Widget API | Core system for loading and managing widgets (widgets themselves are optional and loaded dynamically) |
+| Event Handling | Built-in support for mouse, touch, keyboard, and gamepad interactions & focus management |
+| Responsive Design | Automatically scales UI elements and interaction based on screen dimensions |
+| State Management | Tracks and persists element states to save and load configurations |
+| Extensibility | Modular design allowing easy addition of new widgets or removing unneeded widgets (see Widget Types section) |
+| Debug Mode | Toggle grid and element outlines for easy development |
+
+
+**Note**: These features are all part of the LUIS core library (`core.lua`), which has **zero dependencies**! You can use the core library on its own and implement your own widgets for a lightweight UI system for [Löve2D](https://love2d.org/) without any additional dependencies.
 
 ## Widget Types
 
