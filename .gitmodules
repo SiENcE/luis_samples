@@ -1,3 +1,3 @@
 [submodule "luis"]
 	path = luis
-	url = git@github.com:SiENcE/luis.git
+url=https://github.com/SiENcE/luis.git
