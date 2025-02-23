@@ -104,7 +104,7 @@ LUIS comes with a variety of pre-built widgets to create rich user interfaces. W
 3. **Include LUIS in Your Löve2D Project**:
     ```lua
     -- Initialize LUIS
-    local initluis = require("luis.init")
+    local initLuis = require("luis.init")
     
     -- Direct this to your widgets folder.
     local luis = initLuis("luis/widgets")
@@ -119,7 +119,7 @@ Here's a simple example to create a FlexContainer with two buttons and a slider 
 
 main.lua
 ```lua
-local initluis = require("luis.init")
+local initLuis = require("luis.init")
 
 -- Direct this to your widgets folder.
 local luis = initLuis("luis/widgets")
