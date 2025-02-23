@@ -1,4 +1,4 @@
-# LUIS: Love UI System
+# LUIS: Love UI System - SAMPLES
 
 <p align="center">
  <a href="https://github.com/SiENcE/luis/blob/main/assets/logo_small.png">
