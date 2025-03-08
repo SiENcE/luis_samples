@@ -1,3 +1,8 @@
+if arg[2] == "debug" then
+    require("lldebugger").start()
+    print('Debug')
+end
+
 local initLuis = require("luis.init")
 -- Direct this to your widgets folder.
 local luis = initLuis("luis/widgets")
