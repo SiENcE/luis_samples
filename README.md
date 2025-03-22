@@ -57,7 +57,7 @@
 
 ## Getting Started
 
-1. **Install Löve2D**: You can download Löve2D 11.5 from [here](https://love2d.org/).
+1. **Install Löve2D** (11.5): You can download Löve2D 11.5 from [here](https://love2d.org/).
 2. **Clone the LUIS Library**:
     ```bash
     git clone --recurse-submodules https://github.com/SiENcE/luis_samples.git
