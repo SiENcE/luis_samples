@@ -20,7 +20,7 @@ local dialogueScript = {
 function love.load()
     -- Set window dimensions
     love.window.setMode(800, 600, {resizable = true})
-	love.graphics.setDefaultFilter("nearest", "nearest")
+    love.graphics.setDefaultFilter("nearest", "nearest")
     
     -- Set up LUIS grid size and scaling
     luis.gridSize = 20
@@ -33,12 +33,12 @@ function love.load()
     
     -- Create a nice custom theme
     local customTheme = {
-        boxColor = {0.92, 0.85, 0.65, 0.95},       -- Slightly transparent beige
-        nameBoxColor = {0.92, 0.85, 0.65, 0.95},   -- Same for name box
+        boxColor = {0.92, 0.85, 0.65, 0.5},        -- Semi-transparent beige for base layer
+        nameBoxColor = {0.92, 0.85, 0.65, 0.75},    -- Same for name box
         textColor = {0.25, 0.20, 0.16, 1},         -- Dark brown text
         borderRadius = 18,                          -- Rounder corners
-        shadowColor = {0.1, 0.1, 0.1, 0.6},        -- Darker shadow
-        shadowOffset = 5,                           -- Larger shadow
+        shadowColor = {0.1, 0.1, 0.1, 0.3},        -- Lighter shadow (glassmorphism will add its own)
+        shadowOffset = 4,                           -- Shadow size
         padding = 20,                               -- More padding
         font = love.graphics.getFont() or love.graphics.newFont(16),
         nameFont = love.graphics.getFont() or love.graphics.newFont(18),
@@ -55,6 +55,25 @@ function love.load()
         30, 6, 20, 5,
         customTheme)
     
+    -- Define and apply glassmorphism options
+    local glassmorphismOptions = {
+        opacity = 0.8,                         -- Make it fairly transparent
+        blur = 15,                             -- Good amount of blur effect
+        borderRadius = 20,                     -- Rounded corners
+        borderWidth = 2,                       -- Visible but thin border
+        borderColor = {1, 1, 1, 0.3},          -- Soft white border
+        backgroundColor = {0.9, 0.9, 0.95, 0.2}, -- Very light, mostly transparent background
+        shadowColor = {0.1, 0.1, 0.2, 0.4},    -- Dark blue-ish shadow
+        shadowBlur = 20,                       -- Soft shadow spread
+        shadowOffsetX = 7,                     -- Shadow offset to the right
+        shadowOffsetY = 7,                     -- Shadow offset downward
+        highlightColor = {1, 1, 1, 0.3},       -- White highlight
+        highlightWidth = 2                     -- Thin highlight edge
+    }
+    
+    -- Use the built-in setDecorator method
+    dialogue:setDecorator("GlassmorphismDecorator", glassmorphismOptions)
+	
     -- Start with fade-in animation only on the first entry
     dialogue:setVisible(true)  -- Make sure it's visible
     dialogue:fadeIn()          -- Start fade-in animation for the first dialogue entry
@@ -159,7 +178,7 @@ function love.keypressed(key)
         luis.showGrid = not luis.showGrid
         luis.showElementOutlines = not luis.showElementOutlines
         luis.showLayerNames = not luis.showLayerNames
-		luis.showMetrics = not luis.showMetrics
+        luis.showMetrics = not luis.showMetrics
     end
 end
 
@@ -172,17 +191,17 @@ function love.textinput(text)
 end
 
 function love.mousepressed(x, y, button)
-	if not dialogue.isComplete then
+    if not dialogue.isComplete then
         advanceDialogue()
-	else
-		-- Pass to LUIS first
-		local handled = luis.mousepressed(x, y, button)
+    else
+        -- Pass to LUIS first
+        local handled = luis.mousepressed(x, y, button)
     
-		-- If LUIS handled it and it was our dialogue being clicked
-		if handled then
-			advanceDialogue()
-		end
-	end
+        -- If LUIS handled it and it was our dialogue being clicked
+        if handled then
+            advanceDialogue()
+        end
+    end
 end
 
 function love.mousereleased(x, y, button)
@@ -203,16 +222,16 @@ function love.joystickremoved(joystick)
 end
 
 function love.gamepadpressed(joystick, button)
-	if not dialogue.isComplete then
+    if not dialogue.isComplete then
         advanceDialogue()
-	else
-		luis.gamepadpressed(joystick, button)
-		
-		-- Also handle dialogue advancement with gamepad
-		if button == "a" or button == "b" then
-			advanceDialogue()
-		end
-	end
+    else
+        luis.gamepadpressed(joystick, button)
+        
+        -- Also handle dialogue advancement with gamepad
+        if button == "a" or button == "b" then
+            advanceDialogue()
+        end
+    end
 end
 
 function love.gamepadreleased(joystick, button)
