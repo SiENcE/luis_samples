@@ -158,6 +158,7 @@ function love.keypressed(key)
         luis.showGrid = not luis.showGrid
         luis.showElementOutlines = not luis.showElementOutlines
         luis.showLayerNames = not luis.showLayerNames
+		luis.showMetrics = not luis.showMetrics
     end
 end
 
