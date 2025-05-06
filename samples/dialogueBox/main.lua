@@ -20,6 +20,7 @@ local dialogueScript = {
 function love.load()
     -- Set window dimensions
     love.window.setMode(800, 600, {resizable = true})
+	love.graphics.setDefaultFilter("nearest", "nearest")
     
     -- Set up LUIS grid size and scaling
     luis.gridSize = 20
@@ -82,7 +83,7 @@ function love.update(dt)
 end
 
 function love.draw()
-    -- Draw background
+     -- Draw background
     if background then
         love.graphics.draw(background, 0, 0, 0, 
             love.graphics.getWidth() / background:getWidth(), 
