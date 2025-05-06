@@ -646,6 +646,7 @@ function love.keypressed(key, scancode, isrepeat)
         luis.showGrid = not luis.showGrid
         luis.showElementOutlines = not luis.showElementOutlines
         luis.showLayerNames = not luis.showLayerNames
+		luis.showMetrics = not luis.showMetrics
 	elseif key == "1" then
 		-- set current Focus to "Start Game"
 		luis.setCurrentFocus(mainMenuElements[1])
