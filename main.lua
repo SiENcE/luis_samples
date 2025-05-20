@@ -6,6 +6,7 @@ require("samples.complex_ui.main")
 --require("samples.flexContainer.main")
 --require("samples.nodegraph.main")
 --require("samples.editor.main")
+--require("samples.propertyGrid.main")
 
 -----------------------------------------------
 -- other Samples
