@@ -1,6 +1,8 @@
 -----------------------------------------------
 -- Samples with Mouse/Gamepad/Keyboard support
 -----------------------------------------------
+-- HowTo: comment in or out a sample and than start as ususal > love .
+
 require("samples.complex_ui.main")
 --require("samples.virtual_gamepad.main")
 --require("samples.flexContainer.main")
@@ -21,3 +23,4 @@ require("samples.complex_ui.main")
 --require("samples.jrpg_battlemenu.main")
 --require("samples.test.main")
 --require("samples.dialogueBox.main")
+--require("samples.preCreatedWidgets.main")
