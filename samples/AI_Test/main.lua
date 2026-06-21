@@ -61,6 +61,11 @@ function love.mousereleased(x, y, button, istouch, presses)
     luis.mousereleased(x, y, button, istouch, presses)
 end
 
+function love.keypressed(key, scancode, isrepeat)
+    if key == "escape" then love.event.quit("restart") return end  -- return to the sample launcher
+    luis.keypressed(key, scancode, isrepeat)
+end
+
 -- Switch to the game
 function startGame()
     print("Starting the game...")

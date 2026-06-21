@@ -81,7 +81,7 @@ local gameSettings = {
     pixelPerfect = false,
     highDpi = false,
 	width = luis.baseWidth,
-	height = luis.baseWidth
+	height = luis.baseHeight
 }
 
 local currentTheme = "Custom"
@@ -638,7 +638,7 @@ function love.keypressed(key, scancode, isrepeat)
 	end
     if key == "escape" then
         if luis.currentLayer == "main" then
-            love.event.quit()
+            love.event.quit("restart")  -- return to the sample launcher
         else
             popMenu()
         end
@@ -668,7 +668,7 @@ function love.keypressed(key, scancode, isrepeat)
 	luis.keypressed(key, scancode, isrepeat)
 end
 
-function love.keyreleased(key)
+function love.keyreleased(key, scancode)
     if luis.currentFocus then
 		if luis.currentFocus then
 			if key == "a" then

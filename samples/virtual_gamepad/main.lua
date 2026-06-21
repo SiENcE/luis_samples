@@ -333,6 +333,7 @@ function updateVirtualAnalogStick(x, y, isPressed)
 end
 
 function love.keypressed(key, scancode, isrepeat)
+	if key == "escape" then love.event.quit("restart") return end  -- return to the sample launcher
 	if keyToButton[key] then
         buttonStates[keyToButton[key]] = true
     end

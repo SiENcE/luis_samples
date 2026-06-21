@@ -107,6 +107,15 @@ function endBattle()
     updateBattleElements()
 end
 
+-- Called when the whole party is down. Revive the party and return to the map
+-- so the demo stays playable instead of crashing on an undefined function.
+function gameOver()
+    for _, character in ipairs(gameState.party) do
+        character.hp = character.maxHp or character.hp
+    end
+    endBattle()
+end
+
 battleElements = {}
 function updateBattleElements()
     for i, element in ipairs(battleElements) do
@@ -293,7 +302,6 @@ function battleAction(action)
     -- Move to next character's turn
     battleState.currentTurn = battleState.currentTurn % #gameState.party + 1
     battleState.activeCharacter = getNextLiveCharacter()
-print(battleState.activeCharacter.name)
 
     -- Enemy turn (after all player characters have acted)
     if battleState.currentTurn == 1 then
@@ -333,7 +341,8 @@ print(battleState.activeCharacter.name)
     if allEnemiesDead then
         battleState.damageText = "All enemies defeated! Battle won!"
         battleState.damageTimer = 2
-        love.timer.sleep(2)  -- Pause for 2 seconds to show the victory message
+        -- Note: avoid love.timer.sleep here; it freezes the whole app.
+        -- The victory message is shown via damageTimer; endBattle returns to the map.
         endBattle()
     elseif allPartySuspended then
         gameOver()
@@ -508,7 +517,8 @@ function love.textinput(text)
     luis.textinput(text)
 end
 
-function love.keypressed(key)
+function love.keypressed(key, scancode, isrepeat)
+    if key == "escape" then love.event.quit("restart") return end  -- return to the sample launcher
     if gameState.currentView == "game" then
         if key == 'up' then
             moveForward()

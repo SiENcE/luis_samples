@@ -421,9 +421,10 @@ function love.mousepressed(x, y, button, istouch, presses)
     local gridX = x / luis.scale
     local gridY = y / luis.scale
 
-    if not luis.mousepressed(gridX, gridY, button, istouch, presses) and editor.mode == "edit" then
+    -- Pass raw screen coords: luis.mousepressed divides by luis.scale internally.
+    if not luis.mousepressed(x, y, button, istouch, presses) and editor.mode == "edit" then
         for _, widget in ipairs(editor.widgets) do
-			local isOver = utils.pointInRect(x, y, widget.position.x, widget.position.y, widget.width, widget.height)
+			local isOver = utils.pointInRect(gridX, gridY, widget.position.x, widget.position.y, widget.width, widget.height)
 			if widget.type == "FlexContainer" and isOver then return end
 
             -- Calculate widget bounds in screen space
@@ -454,7 +455,7 @@ function love.mousepressed(x, y, button, istouch, presses)
 end
 
 function love.mousereleased(x, y, button, istouch, presses)
-    x, y = x / luis.scale, y / luis.scale
+    -- Pass raw screen coords: luis.mousereleased divides by luis.scale internally.
     luis.mousereleased(x, y, button, istouch, presses)
     if editor.mode == "edit" then
         if button == 1 then
@@ -471,10 +472,7 @@ end
 
 function love.keypressed(key, scancode, isrepeat)
     if key == "escape" then
-        editor.placingWidget = false
-        editor.selectedWidget = nil
-        editor.movingWidget = nil
-        editor.resizingWidget = nil
+        love.event.quit("restart")  -- return to the sample launcher
     elseif key == "delete" and editor.mode == "edit" then
         for i = #editor.widgets, 1, -1 do
             local widget = editor.widgets[i]

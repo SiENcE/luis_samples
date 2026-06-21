@@ -57,15 +57,15 @@ function love.load()
 	-----------------------------------------------------------------------------------------
 	-- add to BODY and use FIXED POSITIONS disabling automatic layout of the flexContainer!
 	-----------------------------------------------------------------------------------------
-    local node1 = luis.createElement("gameplay", "Node", "My Node 1", 8, 8, 14, 26)
+    local node1 = luis.createElement("main", "Node", "My Node 1", 8, 8, 14, 26)
     node1:addOutput("Output 1")
     node1:addOutput("Output 2")
 
-    local node2 = luis.createElement("gameplay", "Node", "My Node 2", 8, 8, 25, 19)
+    local node2 = luis.createElement("main", "Node", "My Node 2", 8, 8, 25, 19)
     node2:addInput("Input 1")
     node2:addOutput("Output 1")
 
-    local node3 = luis.createElement("gameplay", "Node", "My Node 3", 8, 8, 34, 28)
+    local node3 = luis.createElement("main", "Node", "My Node 3", 8, 8, 34, 28)
     node3:addInput("Input 1")
     node3:addInput("Input 2")
 
@@ -80,7 +80,7 @@ function love.load()
 	-- CustomView can be used to render gameplay
     plasmaBuffer = love.image.newImageData(body.width, body.height)
     colorPalette = createColorPalette(256)
-	local customView = luis.createElement("gameplay", "Custom", function(self)
+	local customView = luis.createElement("main", "Custom", function(self)
 		love.graphics.setColor(1, 0, 0)
 		love.graphics.rectangle("line", 0, 0, self.width, self.height)
 		for y = 0, self.height - 1, 2 do
@@ -197,9 +197,7 @@ end
 
 function love.keypressed( key, scancode, isrepeat )
     if key == "escape" then
-        if luis.currentLayer == "main" then
-            love.event.quit()
-        end
+        love.event.quit("restart")  -- return to the sample launcher
     elseif key == "tab" then
         luis.showGrid = not luis.showGrid
         luis.showElementOutlines = not luis.showElementOutlines

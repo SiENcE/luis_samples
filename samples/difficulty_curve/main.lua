@@ -319,11 +319,7 @@ end
 
 function love.keypressed(key, scancode, isrepeat)
     if key == "escape" then
-        if luis.currentLayer == "main" then
-            love.event.quit()
-        else
-            popMenu()
-        end
+        love.event.quit("restart")  -- return to the sample launcher
     elseif key == "tab" then
         luis.showGrid = not luis.showGrid
         luis.showElementOutlines = not luis.showElementOutlines

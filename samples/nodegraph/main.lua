@@ -132,7 +132,7 @@ end
 -- 2-to-1 Multiplexer
 function createMUX()
 	local muxNode = luis.createElement("graph", "Node", "MUX", 4, 4, 10, 19, function(a, b, sel)
-        return {s == 1 and a or b}
+        return {sel == 1 and a or b}
 	end, theme.node)
     muxNode:addInput("A")
     muxNode:addInput("B")
@@ -142,7 +142,7 @@ function createMUX()
 end
 
 -- SR Latch (possibily WRONG implemented!)
-function createMUX()
+function createSRLatch()
 	local srLatchNode = luis.createElement("graph", "Node", "SR Latch", 4, 4, 10, 19, function(set, reset)
         local state = srLatchNode.state or 0
         if set and not reset then
@@ -280,6 +280,7 @@ function love.draw()
 end
 
 function love.keypressed(key, scancode, isrepeat)
+	if key == "escape" then love.event.quit("restart") return end  -- return to the sample launcher
 	if key == "tab" then
         luis.showGrid = not luis.showGrid
         luis.showElementOutlines = not luis.showElementOutlines

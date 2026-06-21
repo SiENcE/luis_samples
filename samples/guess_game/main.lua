@@ -124,7 +124,8 @@ function love.textinput(text)
     luis.textinput(text)
 end
 
-function love.keypressed(key)
+function love.keypressed(key, scancode, isrepeat)
+    if key == "escape" then love.event.quit("restart") return end  -- return to the sample launcher
     if key == "return" or key == "enter" then
         checkGuess()
 	elseif key == "tab" then

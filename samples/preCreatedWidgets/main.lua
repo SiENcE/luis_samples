@@ -117,6 +117,7 @@ function love.mousereleased(x, y, button, istouch)
 end
 
 function love.keypressed(key)
+    if key == "escape" then love.event.quit("restart") return end  -- return to the sample launcher
     if key == "tab" then
         luis.showGrid = not luis.showGrid
         luis.showElementOutlines = not luis.showElementOutlines
