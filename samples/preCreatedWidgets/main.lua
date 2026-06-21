@@ -93,7 +93,14 @@ function love.load()
     end
 end
 
+local time = 0
 function love.update(dt)
+	time = time + dt
+	if time >= 1/60 then	
+		luis.flux.update(time)
+		time = 0
+	end
+	
     luis.update(dt)
 end
 
